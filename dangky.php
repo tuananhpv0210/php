@@ -48,73 +48,59 @@ if(isset($_POST['username'])){
 }
 
 ?>
-
-<body>
-    <div id="login">
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Registration</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">Username: </label><br>
-                                <input type="text" name="username" id="username" class="form-control">
-                               <span style="color: red"><?php echo (isset($err['username']))?$err['username']:'' ?></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password: </label><br>
-                                <input type="text" name="password" id="password" class="form-control">
-                                <span style="color: red"><?php echo (isset($err['password']))?$err['password']:'' ?></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password (Confirm): </label><br>
-                                <input type="text" name="password_confirm" id="" class="form-control">
-                                <span style="color: red"><?php echo (isset($err['password_confirm']))?$err['password_confirm']:'' ?></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">email: </label><br>
-                                <input type="text" name="email" id="password" class="form-control">
-                                 <span style="color: red"><?php echo (isset($err['email']))?$err['email']:'' ?></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Account name: </label><br>
-                                <input type="text" name="name" id="" class="form-control">
-								<span style="color: red"><?php echo (isset($err['name']))?$err['name']:'' ?></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">birthday: </label><br>
-                                <input type="date" name="birthday" id="" class="form-control">
-                                <span style="color: red"><?php echo (isset($err['birthday']))?$err['birthday']:'' ?></span>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">address:  </label><br>
-                                <input type="text" name="address" id="" class="form-control">
-                                <span style="color: red"><?php echo (isset($err['address']))?$err['address']:'' ?></span>
-
-                            </div>
-                           
-                            <div id="register-link" class="text-right">
-                               <button type="submit" class="btn btn-primary" name="submit">Register</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-<div class="container">
+<div class="col-md-5">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Panel title</h3>
 		</div>
 		<div class="panel-body">
-			Panel content
+			<form action="" method="POST" role="form">
+
+				<div class="form-group">
+					<label for="">Username</label>
+					<input type="text" class="form-control" id="" placeholder="Input field" name="username">
+					<span style="color: red"><?php echo (isset($err['username']))?$err['username']:'' ?></span>
+				</div>
+				<div class="form-group">
+					<label for="">Email</label>
+					<input type="text" class="form-control" id="" placeholder="Input field" name="email">
+					<span style="color: red"><?php echo (isset($err['email']))?$err['email']:'' ?></span>
+				</div>
+				<div class="form-group">
+					<label for="">password</label>
+					<input type="password" class="form-control" id="" placeholder="Input field" name="password">
+					<span style="color: red"><?php echo (isset($err['password']))?$err['password']:'' ?></span>
+				</div>
+				<div class="form-group">
+					<label for="">password_confirm</label>
+					<input type="password" class="form-control" id="" placeholder="Input field" name="password_confirm">
+					<span style="color: red"><?php echo (isset($err['password_confirm']))?$err['password_confirm']:'' ?></span>
+				</div>
+				<div class="form-group">
+					<label for="">name acc</label>
+					<input type="" class="form-control" id="" placeholder="Input field" name="name">
+					<span style="color: red"><?php echo (isset($err['name']))?$err['name']:'' ?></span>
+				</div>
+				<div class="form-group">
+					<label for="">birthday</label>
+					<input type="date" class="form-control" id="" placeholder="Input field" name="birthday">
+					<span style="color: red"><?php echo (isset($err['birthday']))?$err['birthday']:'' ?></span>
+				</div>
+				<div class="form-group">
+					<label for="">address</label>
+					<input type="" class="form-control" id="" placeholder="Input field" name="address">
+					<span style="color: red"><?php echo (isset($err['address']))?$err['address']:'' ?></span>
+				</div>
+
+
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
 		</div>
 	</div>
 </div>
+
+
 
 <?php include('footer.php') ?>
 

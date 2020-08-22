@@ -27,36 +27,30 @@ if(isset($_POST['name'])){
 	}
 
 ?>
-<body>
-    <div id="login">
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">name:</label><br>
-                                <input type="text" name="name" id="name" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                               <a href="dangky.php" title="">đăng ký</a>
-                            </div>
-                            
-                            <div id="register-link" class="text-right">
-                               <button type="submit" class="btn btn-primary" name="submit">login</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+
+<div class="col-md-5">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Panel title</h3>
+		</div>
+		<div class="panel-body">
+			<form action="" method="POST" role="form">
+
+				<div class="form-group">
+					<label for="">name acc</label>
+					<input type="text" class="form-control" id="" placeholder="Input field" name="name">
+				</div>
+				<div class="form-group">
+					<label for="">password</label>
+					<input type="password" class="form-control" id="" placeholder="Input field" name="password">
+
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
 
 <?php include('footer.php') ?>
 
