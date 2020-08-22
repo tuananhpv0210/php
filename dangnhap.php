@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include('heder.php');
 if(isset($_POST['name'])){
 		$name = $_POST['name'];
@@ -10,14 +11,14 @@ if(isset($_POST['name'])){
 		$checkname = mysqli_num_rows($query);
 		// var_dump($checkname);
 		if($checkname == 1){
+			$_SESSION['user'] = $name;
 			$checkpass = password_verify($password, $data['password']);
 			if($checkpass){
 				$_SESSION['user']= $data;
-				
 				header('location: index.php');
 			}
 			else{
-				echo 'thất bại';
+				echo 'đăng nhập thất bại';
 			}
 		}
 		else{
@@ -26,9 +27,10 @@ if(isset($_POST['name'])){
 
 	}
 
+
 ?>
 
-<div class="col-md-5">
+<div class="col-md-5" style="padding-top: 50px;">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Panel title</h3>
@@ -45,6 +47,11 @@ if(isset($_POST['name'])){
 					<input type="password" class="form-control" id="" placeholder="Input field" name="password">
 
 				</div>
+				<div class="form-group">
+					<a href="dangky.php">đăng ký</a>
+
+				</div>
+
 				
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
