@@ -8,12 +8,13 @@ USE demophp;
 
 -- tạo bảng danh mục với product 
 
-CREATE TABLE user(
+CREATE TABLE tbl_user(
 	id int PRIMARY KEY AUTO_INCREMENT,
-	name varchar(100) UNIQUE,
-	email varchar(255) UNIQUE,
-	username varchar(255) UNIQUE,
+	name varchar(50) not null,
+	email varchar(50) UNIQUE,
+	username varchar(50) UNIQUE,
 	password varchar(255) not null,
-	birthday int,
-	address varchar(100)
-);
+	birthday varchar(10),
+	address varchar(100),
+	created_at TIMESTAMP NOT NULL,
+	updated_at TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE now()

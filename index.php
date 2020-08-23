@@ -2,7 +2,7 @@
 include('header.php');
 session_start();
 if(!isset($_SESSION['user'])){
-	header("location: dangnhap.php");
+	header("location: login.php");
 }
 ?>
 <nav class="navbar navbar-default" role="navigation">
@@ -49,8 +49,8 @@ if(!isset($_SESSION['user'])){
 	<div class="container pt-5">
 		<div class="jumbotron">
 			<div class="container">
-				<?php if(isset($name['name'])){ ?>
-					<h1>Hello <?php echo $name['name'] ?></h1>
+				<?php if(isset($username['username'])){ ?>
+					<h1>Hello <?php echo $username['username'] ?></h1>
 				<?php }else{ ?>
 					<h1>hellooo, pro</h1>
 				<?php } ?>
