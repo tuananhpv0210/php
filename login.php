@@ -1,9 +1,10 @@
 <?php 
 session_start();
-include('heder.php');
-if(isset($_POST['name'])){
-		$name = $_POST['name'];
-		$password = $_POST['password'];
+include('header.php');
+$requestData=$_POST;
+if(isset($requestData['name'])){
+		$name = $requestData['name'];
+		$password = $requestData['password'];
 
 		$sql = "SELECT * FROM tbl_user WHERE name = '$name'";
 		$query = mysqli_query($conn,$sql);
@@ -48,7 +49,7 @@ if(isset($_POST['name'])){
 
 				</div>
 				<div class="form-group">
-					<a href="dangky.php">đăng ký</a>
+					<a href="register.php">đăng ký</a>
 
 				</div>
 

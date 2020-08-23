@@ -1,5 +1,5 @@
 <?php 
-include('heder.php');
+include('header.php');
 session_start();
 if(!isset($_SESSION['user'])){
 	header("location: dangnhap.php");
@@ -32,7 +32,7 @@ if(!isset($_SESSION['user'])){
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Link</a></li>
-				<li><a href="dangnhap.php">đăng nhập</a></li>
+				<li><a href="logout.php">đăng xuất</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -49,8 +49,8 @@ if(!isset($_SESSION['user'])){
 	<div class="container pt-5">
 		<div class="jumbotron">
 			<div class="container">
-				<?php if(isset($username['userna me'])){ ?>
-					<h1>Hello <?php echo $username['username'] ?></h1>
+				<?php if(isset($name['name'])){ ?>
+					<h1>Hello <?php echo $name['name'] ?></h1>
 				<?php }else{ ?>
 					<h1>hellooo, pro</h1>
 				<?php } ?>
