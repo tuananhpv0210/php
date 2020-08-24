@@ -40,7 +40,7 @@ if(isset($requestData['username'])){
 		$password = password_hash($password, PASSWORD_DEFAULT);
 			// var_dump($pass);
 			// die();
-		$sql = "INSERT INTO tbl_user(username,password,email,name,birthday,address) VALUES ('$username','$password','$email','$name','$birthday','$address')";
+		$sql = "INSERT INTO users(username,password,email,name,birthday,address) VALUES ('$username','$password','$email','$name','$birthday','$address')";
 		$query = mysqli_query($conn,$sql);
 		if($query){
 			header('location: login.php');

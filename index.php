@@ -31,34 +31,41 @@ if(!isset($_SESSION['user'])){
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
+				<?php if(isset($_SESSION['user'])){ ?>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']['username'] ?><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="logout.php">logout</a></li>
+							<li><a href="informationUser.php">information User</a></li>
+						</ul>
+					</li>
+				<?php }else{ ?>
+					<li><a href="login.php">login</a></li>
+
+				<?php } ?>
 				<li><a href="#">Link</a></li>
-				<li><a href="logout.php">đăng xuất</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li><a href="#">Separated link</a></li>
-					</ul>
-				</li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div>
 </nav>
-	<div class="container pt-5">
-		<div class="jumbotron">
-			<div class="container">
-				<?php if(isset($username['username'])){ ?>
-					<h1>Hello <?php echo $username['username'] ?></h1>
-				<?php }else{ ?>
-					<h1>hellooo, pro</h1>
-				<?php } ?>
+<div class="container pt-5">
+	<div class="jumbotron">
+		<div class="container">
+			<?php if(isset($_SESSION['user'])){ ?>
+				<h1>Hello <?php echo $_SESSION['user']['username'] ?></h1>
+				<p>Contents ...</p>
+				<p>
+					<a href="logout.php " title="" class="btn btn-primary btn-lg">logout</a>
+				</p>
+			<?php }else{ ?>
+				<h1>hellooo, pro</h1>
+				
 
 				<p>Contents ...</p>
 				<p>
 					<a href="dangnhap.php " title="" class="btn btn-primary btn-lg">login</a>
 				</p>
-			</div>
+			<?php } ?>
 		</div>
 	</div>
+</div>

@@ -3,30 +3,30 @@ session_start();
 include('header.php');
 $requestData=$_POST;
 if(isset($requestData['name'])){
-		$name = $requestData['name'];
-		$password = $requestData['password'];
+	$name = $requestData['name'];
+	$password = $requestData['password'];
 
-		$sql = "SELECT * FROM tbl_user WHERE name = '$name'";
-		$query = mysqli_query($conn,$sql);
-		$data = mysqli_fetch_assoc($query);
-		$checkname = mysqli_num_rows($query);
+	$sql = "SELECT * FROM users WHERE name = '$name'";
+	$query = mysqli_query($conn,$sql);
+	$data = mysqli_fetch_assoc($query);
+	$checkname = mysqli_num_rows($query);
 		// var_dump($checkname);
-		if($checkname == 1){
-			$_SESSION['user'] = $name;
-			$checkpass = password_verify($password, $data['password']);
-			if($checkpass){
-				$_SESSION['user']= $data;
-				header('location: index.php');
-			}
-			else{
-				echo 'đăng nhập thất bại';
-			}
+	if($checkname == 1){
+		$_SESSION['user'] = $name;
+		$checkpass = password_verify($password, $data['password']);
+		if($checkpass){
+			$_SESSION['user']= $data;
+			header('location: index.php');
 		}
 		else{
-			echo 'tài khoản của bạn không tồn tại';
+			echo 'đăng nhập thất bại';
 		}
-
 	}
+	else{
+		echo 'tài khoản của bạn không tồn tại';
+	}
+
+}
 
 
 ?>
