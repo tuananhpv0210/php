@@ -1,8 +1,10 @@
 <?php 
 include('header.php');
-$errorMessages = [];
-$requestData=$_POST;
-if(isset($requestData['username'])){
+$validateMessage = [];
+$request = $_POST;
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') { // Nếu là post method thì mới thực hiện
+	/*
 	$username = $requestData['username'];
 	$password = $requestData['password'];
 	$password_confirm = $requestData['password_confirm'];
@@ -11,92 +13,129 @@ if(isset($requestData['username'])){
 	$birthday = $requestData['birthday'];
 	$address= $requestData['address']; 
 
-	if(empty($username)){
-		$errorMessages['username'] = 'hãy nhập tên';
+	if(empty($username)) {
+		$validateMessage['username'] = 'hãy nhập tên';
 	}
-	if(empty($password)){
-		$errorMessages['password'] = 'hãy nhập mật khẩu';
+	if(empty($password)) {
+		$validateMessage['password'] = 'hãy nhập mật khẩu';
 	}
-	if(empty($password_confirm)){
-		$errorMessages['password_confirm'] = 'hãy nhập mật khẩu';
+	if(empty($password_confirm)) {
+		$validateMessage['password_confirm'] = 'hãy nhập mật khẩu';
 	}
-	if($password != $password_confirm){
-		$errorMessages['password_confirm'] = 'mât khẩu nhập lại sai';
+	if($password != $password_confirm) {
+		$validateMessage['password_confirm'] = 'mât khẩu nhập lại sai';
 	}
-	if(empty($email)){
-		$errorMessages['email'] = 'hãy nhập email';
+	if(empty($email)) {
+		$validateMessage['email'] = 'hãy nhập email';
 	}
-	if(empty($name)){
-		$errorMessages['name'] = 'hãy nhập tên tài khoản ';
+	if(empty($name)) {
+		$validateMessage['name'] = 'hãy nhập tên tài khoản ';
 	}
-	if(empty($birthday)){
-		$errorMessages['birthday'] = 'hãy nhập ngày sinh ';
+	if(empty($birthday)) {
+		$validateMessage['birthday'] = 'hãy nhập ngày sinh ';
 	}
-	if(empty($address)){
-		$errorMessages['address'] = 'hãy nhập quê quán';
-	}
+	if(empty($address)) {
+		$validateMessage['address'] = 'hãy nhập quê quán';
+	}*/
+	$rules = ['username', 'password', 'password_confirm', 'email', 'name', 'birthday', 'address'];
+	$messages = [
+		'username' => 'Tên không được để trống',
+		'password' => 'Mật khẩu không được bỏ trống',
+		'password_confirm' => 'Mật khẩu xác nhận không được bỏ trống',
+		'same_password' => 'Xác nhận mật khẩu không khớp',
+		'email' => 'Email không được bỏ trống',
+		'name' => 'Tên không được bỏ trống',
+		'birthday' => 'Ngày sinh nhật không được bỏ trống',
+		'address' => 'Địa chỉ không được bỏ trống',
+	];
+	$validated = true;
+	$user = [];
+	foreach ($rules as $field) {
+		if (!isset($request[$field]) or empty($request[$field])) {
+			$validated = false;
+			$validateMessage[$field] = $messages[$field];
+			continue;
+		}
+		if ($field === 'password_confirm' && $request[$field] !== $request['password']) {
+			$validateMessage[$field] = $messages['same_password'];
+			continue;
+		}
 
-	if(empty($errorMessages)){
-		$password = password_hash($password, PASSWORD_DEFAULT);
-			// var_dump($pass);
-			// die();
-		$sql = "INSERT INTO users(username,password,email,name,birthday,address) VALUES ('$username','$password','$email','$name','$birthday','$address')";
-		$query = mysqli_query($conn,$sql);
-		if($query){
+		if ($field !== 'password_confirm') {
+			$user[$field] = $request[$field];
+		}
+	}
+	if(!count($validateMessage)) {
+
+		$username = $request['username'];
+		$password= $request['password'];
+		$email = $request['email'];
+		$name = $request['name'];
+		$birthday = $request['birthday'];
+		$address = $request['address'];
+
+		$password = password_hash($request['password'], PASSWORD_DEFAULT);
+
+		$command = "INSERT INTO users (username, password, email,name, birthday,address) VALUES ('$username', '$password', '$email','$name' ,'$birthday','$address')";
+		$query = mysqli_query($conn, $command);
+		if($query) {
 			header('location: login.php');
 		}
 	}
 }
-
 ?>
-<div class="col-md-5">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h3 class="panel-title">Panel title</h3>
-		</div>
-		<div class="panel-body">
-			<form action="" method="POST" role="form">
 
-				<div class="form-group">
-					<label for="">Username</label>
-					<input type="text" class="form-control" id="" placeholder="Input field" name="username">
-					<span style="color: red"><?php echo (isset($errorMessages['username']))?$errorMessages['username']:'' ?></span>
+<div class="container">
+	<div class="row justify-content-center" id="register-form">
+		<div class="col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Register</h3>
 				</div>
-				<div class="form-group">
-					<label for="">Email</label>
-					<input type="text" class="form-control" id="" placeholder="Input field" name="email">
-					<span style="color: red"><?php echo (isset($errorMessages['email']))?$errorMessages['email']:'' ?></span>
-				</div>
-				<div class="form-group">
-					<label for="">password</label>
-					<input type="password" class="form-control" id="" placeholder="Input field" name="password">
-					<span style="color: red"><?php echo (isset($errorMessages['password']))?$errorMessages['password']:'' ?></span>
-				</div>
-				<div class="form-group">
-					<label for="">password_confirm</label>
-					<input type="password" class="form-control" id="" placeholder="Input field" name="password_confirm">
-					<span style="color: red"><?php echo (isset($errorMessages['password_confirm']))?$errorMessages['password_confirm']:'' ?></span>
-				</div>
-				<div class="form-group">
-					<label for="">name acc</label>
-					<input type="" class="form-control" id="" placeholder="Input field" name="name">
-					<span style="color: red"><?php echo (isset($errorMessages['name']))?$errorMessages['name']:'' ?></span>
-				</div>
-				<div class="form-group">
-					<label for="">birthday</label>
-					<input type="date" class="form-control" id="" placeholder="Input field" name="birthday">
-					<span style="color: red"><?php echo (isset($errorMessages['birthday']))?$errorMessages['birthday']:'' ?></span>
-				</div>
-				<div class="form-group">
-					<label for="">address</label>
-					<input type="" class="form-control" id="" placeholder="Input field" name="address">
-					<span style="color: red"><?php echo (isset($errorMessages['address']))?$errorMessages['address']:'' ?></span>
-				</div>
+				<div class="panel-body">
+					<form action="" method="POST" role="form">
+						<div class="form-group">
+							<label for="">Username</label>
+							<input type="text" class="form-control" placeholder="Nhập tên đăng nhập" name="username">
+							<span style="color: red"><?php echo (isset($validateMessage['username']))?$validateMessage['username']:'' ?></span>
+						</div>
+						<div class="form-group">
+							<label for="">Email</label>
+							<input type="text" class="form-control" name="email" placeholder="Nhập email">
+							<span style="color: red"><?php echo (isset($validateMessage['email']))?$validateMessage['email']:'' ?></span>
+						</div>
+						<div class="form-group">
+							<label for="">Password</label>
+							<input type="password" class="form-control"  name="password" placeholder="Nhập password">
+							<span style="color: red"><?php echo (isset($validateMessage['password']))?$validateMessage['password']:'' ?></span>
+						</div>
+						<div class="form-group">
+							<label for="">Password_confirm</label>
+							<input type="password" class="form-control"  name="password_confirm" placeholder="Nhập lại password">
+							<span style="color: red"><?php echo (isset($validateMessage['password_confirm']))?$validateMessage['password_confirm']:'' ?></span>
+						</div>
+						<div class="form-group">
+							<label for="">Account name</label>
+							<input type="" class="form-control"  name="name" placeholder="Nhập tên tài khoản">
+							<span style="color: red"><?php echo (isset($validateMessage['name']))?$validateMessage['name']:'' ?></span>
+						</div>
+						<div class="form-group">
+							<label for="">Birthday</label>
+							<input type="date" class="form-control"  name="birthday" >
+							<span style="color: red"><?php echo (isset($validateMessage['birthday']))?$validateMessage['birthday']:'' ?></span>
+						</div>
+						<div class="form-group">
+							<label for="">Address</label>
+							<input type="" class="form-control"  name="address" placeholder="Nhập quê quán">
+							<span style="color: red"><?php echo (isset($validateMessage['address']))?$validateMessage['address']:'' ?></span>
+						</div>
 
 
 
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
