@@ -1,5 +1,5 @@
 <?php 
-include('header.php');
+include('../header.php');
 $validateMessage = [];
 $request = $_POST;
 
@@ -47,22 +47,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') { // Nếu là post method thì mới 
 		$command = "INSERT INTO users (username, password, email,name, birthday,address) VALUES ('$username', '$password', '$email','$name' ,'$birthday','$address')";
 		$query = mysqli_query($conn, $command);
 		if($query) {
-			header('location: login.php');
+			header('location: listUser.php');
 		}
 	}
 }
 ?>
-<style type="text/css">
-	.register{
-		background:  #B0C4DE;
-
-	}
-</style>
 
 <div class="col-md-5 container register" style="padding-bottom: 20px; padding-top: 20px">
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title" style="text-align: center; color: #fff">Register</h3>
+			<h3 class="panel-title" style="text-align: center">Add New User</h3>
 		</div>
 		<div class="panel-body">
 			<form action="" method="POST" role="form">
@@ -104,15 +98,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') { // Nếu là post method thì mới 
 
 
 
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-success">Submit</button>
+				<button type="" class="btn btn-primary"><a href="index.php" style="color: #fff;">Quay Lại</a></button>
 			</form>
 		</div>
 	</div>
-</div>
+</div
 
 
 
 
-<?php include('footer.php') ?>
+<?php include('../footer.php') ?>
 
 

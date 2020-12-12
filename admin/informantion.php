@@ -1,8 +1,8 @@
 <?php
-include('header.php');
+include('../header.php');
 session_start();
 if(!isset($_SESSION['user'])){
-	header("location: login.php");
+	header("location: loginUser.php");
 }
 $request = $_POST;
 if(isset($_GET['id'])){
@@ -21,7 +21,7 @@ if(isset($_GET['id'])){
 			$query = "UPDATE users SET username = '$username', email ='$email', name ='$name', birthday ='$birthday', address ='$address'  WHERE id = $id";
 			mysqli_query($conn, $query);
 
-			header('location: logout.php');
+			header('location: listUser.php');
 		}
 	}
 }
@@ -43,37 +43,29 @@ if(isset($_GET['id'])){
 		</div>
 		<div class="panel-body"  style="padding-top: 15px;">
 			<form action="" method="POST" role="form">
-
 				<div class="form-group">
 					<label for="">Username</label>
 					<input type="text" class="form-control" placeholder="Nhập tên đăng nhập" name="username"  value="<?php echo $InformationUser['username'] ?>">
-
 				</div>
 				<div class="form-group">
 					<label for="">Email</label>
 					<input type="text" class="form-control" name="email" placeholder="Nhập email"  value="<?php echo $InformationUser['email'] ?>">
-
 				</div>
 				<div class="form-group">
 					<label for="">Account name</label>
 					<input type="" class="form-control"  name="name" placeholder="Nhập tên tài khoản"  value="<?php echo $InformationUser['name'] ?>">
-
 				</div>
 				<div class="form-group">
 					<label for="">Birthday</label>
 					<input type="date" class="form-control"  name="birthday"  value="<?php echo $InformationUser['birthday'] ?>">
-
 				</div>
 				<div class="form-group">
 					<label for="">Address</label>
 					<input type="" class="form-control"  name="address" placeholder="Nhập quê quán"  value="<?php echo $InformationUser['address'] ?>">
 
 				</div>
-
-
-
-				<button type="update" class="btn btn-primary" name="update">Update</button>
-				<button type="" class="btn"><a href="index.php" style="color: #000">Return</a></button>
+				<button type="update" class="btn btn-success" name="update">Update</button>
+				<button type="" class="btn btn-primary "><a href="index.php" style="color: #fff">Exit</a></button>
 
 			</form>
 		</div>
@@ -82,4 +74,4 @@ if(isset($_GET['id'])){
 
 
 
-<?php include('footer.php') ?>
+<?php include('../footer.php') ?>
