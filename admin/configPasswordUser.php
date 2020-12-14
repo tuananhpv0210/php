@@ -1,5 +1,5 @@
 <?php
-include('../header.php');
+include('../layouts/header.php');
 session_start();
 if(!isset($_SESSION['user'])){
 	header("location: loginUser.php");
@@ -78,4 +78,4 @@ if(isset($_GET['id'])){
 </div>
 
 
-<?php include('../footer.php') ?>
+<?php include('../layouts/footer.php') ?>

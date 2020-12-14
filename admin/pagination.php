@@ -5,6 +5,7 @@ if (isset($_GET["search"]) && !empty($_GET["search"])) {
 } else {
 	$query = "SELECT * from users";
 }
+
 $result = mysqli_query($conn,$query);
 $row = mysqli_num_rows($result);
 $total_page = ceil($row/$limit);

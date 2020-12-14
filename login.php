@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include('header.php');
+include('./layouts/header.php');
 $request = $_POST;
 if(isset($request['submit'])){
 	$name = $request['name'];
@@ -64,6 +64,6 @@ if(isset($request['submit'])){
 	</div>
 </div>
 
-<?php include('footer.php') ?>
+<?php include('./layouts/footer.php') ?>
 
 

@@ -1,10 +1,10 @@
 <?php 
-include('header.php');
-$validateMessage = [];
-$request = $_POST;
+include('./layouts/header.php');
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') { // Nếu là post method thì mới thực hiện
 
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$validateMessage = [];
+	$request = $_POST;
 	$rules = ['username', 'password', 'password_confirm', 'email', 'name', 'birthday', 'address'];
 	$messages = [
 		'username' => 'Tên không được để trống',
@@ -113,6 +113,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') { // Nếu là post method thì mới 
 
 
 
-<?php include('footer.php') ?>
+<?php include('../layouts/footer.php') ?>
 
 

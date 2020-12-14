@@ -95,4 +95,4 @@ $users = mysqli_query($conn,$query);
 </div>
 
 
-<?php include("../footer.php") ?>
+<?php include("../layouts/footer.php") ?>

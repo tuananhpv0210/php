@@ -1,5 +1,5 @@
 <?php 
-include('header.php');
+include('./layouts/header.php');
 $information =  mysqli_query($conn,"SELECT * from users");
 session_start();
 // if(!isset($_SESSION['user'])){

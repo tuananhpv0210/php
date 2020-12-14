@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('./layouts/header.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 if (isset($_POST["send"])) {
@@ -139,4 +139,4 @@ if (isset($_POST["send"])) {
 </form>
 
 
-<?php include('footer.php') ?>
+<?php include('../layouts/footer.php') ?>

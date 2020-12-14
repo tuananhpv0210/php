@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('./layouts/header.php');
 if (isset($_GET['email']) ) {
         # code...
     $email = $_GET['email'];
@@ -70,4 +70,4 @@ if (isset($_GET['email']) ) {
     </div>
 </div>
 
-<?php include('footer.php') ?>
+<?php include('../layouts/footer.php') ?>

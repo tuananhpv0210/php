@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('./layouts/header.php');
 session_start();
 if(!isset($_SESSION['user'])){
 	header("location: login.php");
@@ -72,8 +72,8 @@ if(isset($_GET['id'])){
 
 
 
-				<button type="update" class="btn btn-primary" name="update">Update</button>
-				<button type="" class="btn"><a href="index.php" style="color: #000">Return</a></button>
+				<button type="update" class="btn btn-success" name="update">Update</button>
+				<button type="" class="btn btn-primary"><a href="index.php" style="color: #fff">Exit</a></button>
 
 			</form>
 		</div>
@@ -82,4 +82,4 @@ if(isset($_GET['id'])){
 
 
 
-<?php include('footer.php') ?>
+<?php include('./layouts/footer.php') ?>

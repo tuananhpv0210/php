@@ -1,5 +1,5 @@
 <?php 
-include("../header.php") ;
+include("../layouts/header.php") ;
 $information =  mysqli_query($conn,"SELECT * from users");
 session_start();
 if(!isset($_SESSION['user'])){
@@ -27,7 +27,7 @@ if(!isset($_SESSION['user'])){
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="listUser.php">List Users</a>
-						<a class="dropdown-item" href="addNew.php">Add New User</a>
+						<a class="dropdown-item" href="addUsers.php">Add New User</a>
 						<a class="dropdown-item" href="informantion.php?id=<?php echo $_SESSION['user']['id']?>">information</a>
 						<a class="dropdown-item" href="configPasswordUser.php?id=<?php echo $_SESSION['user']['id']?>">Security</a>
 						<a class="dropdown-item" href="logoutUser.php">logout</a>
