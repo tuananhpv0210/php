@@ -176,8 +176,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 }, false);
 })();
 </script>
-
-
 <?php include('../layouts/footer.php') ?>
 
 
