@@ -29,7 +29,6 @@ if(isset($_GET['id'])){
 ?>
 <style type="text/css">
 	.pass{
-		background: #B0C4DE;
 		padding-top: 30px;
 		padding-bottom: 30px;
 		margin-top: 80px;
