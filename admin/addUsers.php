@@ -40,7 +40,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		}
 	}
 
-
 	if(!count($validateMessage)) {
 		$username = $request['username'];
 		$password= $request['password'];
