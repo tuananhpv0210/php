@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		'birthday' => 'Ngày sinh nhật không được bỏ trống',
 		'address' => 'Địa chỉ không được bỏ trống',
 	];
+	//âfaga
 	$validated = true;
 	$user = [];
 	foreach ($rules as $field) {
