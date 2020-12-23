@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 include('./layouts/header.php');
 $request = $_POST;
 if(isset($request['submit'])){
